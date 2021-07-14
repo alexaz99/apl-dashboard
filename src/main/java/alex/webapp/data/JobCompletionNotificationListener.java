@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Run this listener on the job completion.
+ * Is called when the job is done.
  */
 @Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
@@ -30,7 +31,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
             log.info("!!! JOB FINISHED! Time to verify the results");
 
             jdbcTemplate.query("SELECT team1, team1, date FROM match",
-                    (rs, row) -> "Team 1" + rs.getString(1) + " Team 2 " + rs.getString(2) + " Date " + rs.getString(2)
+                    (rs, row) -> "Team 1" + rs.getString(1) + ", Team 2 " + rs.getString(2) + ", Date " + rs.getString(3)
             ).forEach(str -> System.out.println(str));
             //).forEach(person -> log.info("Found <" + person + "> in the database."));
         }

@@ -44,7 +44,7 @@ public class BatchConfig {
      */
     @Bean
     public FlatFileItemReader<MatchInput> reader() {
-        return new FlatFileItemReaderBuilder<MatchInput>()
+        FlatFileItemReader reader = new FlatFileItemReaderBuilder<MatchInput>()
                 .name("personItemReader")
                 .resource(new ClassPathResource("match-data.csv"))
                 .delimited()
@@ -55,6 +55,20 @@ public class BatchConfig {
                     setTargetType(MatchInput.class);
                 }
             }).build();
+        reader.setLinesToSkip(1);
+        return reader;
+
+        /*return new FlatFileItemReaderBuilder<MatchInput>()
+                .name("personItemReader")
+                .resource(new ClassPathResource("match-data.csv"))
+                .delimited()
+                .names(FIELD_NAMES) // read all of them
+                //.names(new String[]{"firstName", "lastName"})
+                .fieldSetMapper(new BeanWrapperFieldSetMapper<MatchInput>() {
+                    {
+                        setTargetType(MatchInput.class);
+                    }
+                }).build();*/
     }
 
     /**
@@ -111,8 +125,5 @@ public class BatchConfig {
                 .writer(writer)
                 .build();
     }
-
-
-
 }
 

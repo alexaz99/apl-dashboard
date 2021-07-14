@@ -158,4 +158,14 @@ public class MatchInput {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
+
+    @Override
+    public String toString() {
+        return "MatchInput{" +
+                "id='" + id + '\'' +
+                ", date='" + date + '\'' +
+                ", team1='" + team1 + '\'' +
+                ", team2='" + team2 + '\'' +
+                '}';
+    }
 }

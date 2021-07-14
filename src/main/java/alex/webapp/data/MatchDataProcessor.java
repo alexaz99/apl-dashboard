@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Convert each input line from MatchInput class to Match class
