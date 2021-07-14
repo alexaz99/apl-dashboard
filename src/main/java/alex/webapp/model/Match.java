@@ -1,10 +1,22 @@
 package alex.webapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+/**
+ * Class that acts as JPA model
+ * When application starts, JPA is going to create this table on fly
+ * When we add @Entity JPA is going to create this table
+ *
+ * When application starts LPA is
+ */
+@Entity
 public class Match {
 
+    @Id // mean primary key
     private long id;
+
     private String city;
     private LocalDate date;
     private String playerOfMatch;
