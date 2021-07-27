@@ -1,6 +1,8 @@
 package alex.webapp.repository;
 
 import alex.webapp.model.Match;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -14,6 +16,12 @@ public interface MatchRepository extends CrudRepository<Match, Long> {
     // 0. Get team1 Or team2.. Write method name like query.
     // will need to sort it and give just the first N numbers (size) of the whole thing.
     // 1. Will specify sorting in JPA similar like we specified conditions.
-    List<Match> getByTeam1OrTeam2OrderByDateDesc(String teamName1, String teamName2);
+    List<Match> getByTeam1OrTeam2OrderByDateDesc(String teamName1, String teamName2, Pageable pageable);
+
+    // because now we can create a method on interface, let's use this functionality
+    // by using default keyword
+    default List<Match> findLatestMatchesByTeam(String teamName, int count) {
+        return getByTeam1OrTeam2OrderByDateDesc(teamName, teamName, PageRequest.of(0, count));
+    }
 
 }

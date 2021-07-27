@@ -47,8 +47,8 @@ public class TeamController {
         // will need to sort it and give just the first N numbers (size) of the whole thing.
         // 1. Will specify sorting in JPA similar like we specified conditions.
         // 2. Now need to tucle to get top N records. Will do with page request passed in.
-        //  Tell JPA that you want the result be pagable.
-        team.setMatches(this.matchRepository.getByTeam1OrTeam2OrderByDateDesc(teamName, teamName));
+        //  Tell JPA that you want the result be pageble with last 4 matches.
+        team.setMatches(this.matchRepository.findLatestMatchesByTeam(teamName, 4));
 
         // populate the matches
         //getLatestMatches(teamName);
