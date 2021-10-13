@@ -24,6 +24,10 @@ import org.springframework.core.io.ClassPathResource;
 
 import javax.sql.DataSource;
 
+/**
+ * Input process flow
+ * Reader => Processor => Writer
+ */
 @Configuration
 @EnableBatchProcessing
 public class BatchConfig {
