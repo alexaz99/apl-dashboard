@@ -3,6 +3,11 @@ package alex.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Entity class for using JPA
+ * @Entity - This is a marker annotation which indicates that this class is an entity. This annotation must be placed on the class name.
+ * @Id - This annotation is placed on a specific field that holds the persistent identifying properties. This field is treated as a primary key in database.
+ */
 @Entity
 public class Team {
 

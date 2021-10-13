@@ -1,5 +1,7 @@
 package alex.webapp.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
@@ -14,6 +16,21 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class DataSourceConfig {
+
+    private static Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
+
+/*    @Bean
+    public DataSource dataSource() {
+        logger.info("Creating HSQL DB from schema.sql");
+        //jdbc:hsqldb:mem:testdb
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL)
+                .addScript("schema.sql")
+                .setName("alex-db")
+                //.addScript("db/hsqldb/db.sql")
+                .build();
+        return db;
+    }*/
 
     /*@Bean
     public DataSource dataSource(){
